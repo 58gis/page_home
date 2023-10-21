@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!--R5/10/21 14:00アップ版-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホーム画面</title>
+    <style>
+        body {
+            font-family: "Source Han Sans",sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* 二部構成のスタイル */
+        section {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+        }
+
+        /* グリッドレイアウトのスタイル */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .grid-item {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+            @media (min-width: 850px) {
+                .grid-layout {
+                    grid-template-columns: repeat(2, 1fr);
+            }}
+
+        /* 吹き出し*/
+        .grid-item:hover .tooltip {
+            display: block;
+        }
+        .tooltip {
+            display: none;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+            z-index: 10;
+        }
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1部目: 概要 -->
+    <section>
+        <h1>58gisのページ</h1>
+        <p>各種コンテンツへのリンクページです</p>
+    </section>
+
+    <!-- 2部目: コンテンツへのリンク集 -->
+    <section>
+        <h2>コンテンツへのリンク集</h2>
+        <div class="grid-layout">
+            <div class="grid-item">
+                <a href="https://twitter.com/58gis">X</a>
+                <div class="tooltip">旧ツイッターへのリンクです</div>
+            </div>
+
+            <div class="grid-item">
+                <a href="#">工事中</a>
+                <div class="tooltip">工事中</div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
