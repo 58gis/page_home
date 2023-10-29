@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
-<!--R5/10/21 16:00-->
-<!--02home.html-->
+<!--R5/10/31 11:00-->
+<!--04home.html-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,31 +24,67 @@
         /* グリッドレイアウトのスタイル */
         .grid-layout {
             display: grid;
-            grid-template-columns: 1fr;
             gap: 20px;
+            position: relative;
+            padding: 20px; /*コンテナ内のアイテムとの間隔をとる*/
+        }
+        .grid-wrapper {
+            position: relative; /* tooltipの絶対位置の基準とするため */
         }
         .grid-item {
+            display: block; /*リンクをブロックレベル要素として扱う*/
             border: 1px solid #e0e0e0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
             padding: 10px;
             border-radius: 5px;
             position: relative;
+            height: 200px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit; /* リンクの文字色を継承 */
+            background-color: #fff
         }
             @media (min-width: 850px) {
                 .grid-layout {
                     grid-template-columns: repeat(2, 1fr);
             }}
+        .grid-item > text {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .grid-item p {
+            margin: 10px 30px;
+            color: #555;
+        }
+
+        /* 内容と画像のラッパー */
+        .content-wrapper {
+            display: flex;
+        }
+            @media (max-width: 500px) {
+                .content-wrapper {
+                    flex-direction: column;
+                }}
+        .content-image {
+            width: 150px;
+            height: 150px;
+        }
+
 
         /* 吹き出し*/
-        .grid-item:hover .tooltip {
+        .grid-item:hover+.tooltip {
             display: block;
+            visibility: visible;
         }
         .tooltip {
             display: none;
-            background-color: #333;
-            color: #fff;
-            padding: 5px 10px;
+            border: 1px solid #000;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+            padding: 5px 5px;
             position: absolute;
             top: -30px;
+            bottom: 200px;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 5px;
@@ -62,7 +98,7 @@
             margin-left: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: #333 transparent transparent transparent;
+            border-color: #000000 transparent transparent transparent;
         }
     </style>
 </head>
@@ -78,14 +114,26 @@
     <section>
         <h2>コンテンツへのリンク集</h2>
         <div class="grid-layout">
-            <div class="grid-item">
-                <a href="https://58gis.github.io/sangiin/">参議院は入閣に不利？</a>
-                <div class="tooltip">衆参議員のキャリアの違いをデータで分析</div>
+            <div class="grid-wrapper">
+                <a href="https://58gis.github.io/sangiin/" class="grid-item">
+                    <text>参議院は入閣に不利？</text>
+                    <div class="content-wrapper">
+                        <p>2023年9月13日、第2次岸田第2次改造内閣が誕生した。岸田首相の盟友である林芳正氏は...</p>
+                        <img src="https://2.bp.blogspot.com/-UxbAnJzGsgs/UdoBWVQhgAI/AAAAAAAAV9I/qC1HqrDE0uw/s800/nejirekokkai.png" alt="ねじれ国会の画像" class="content-image">
+                    </div>
+                </a>
+                <div class="tooltip">衆参議員のキャリアの<br>違いをデータで分析</div>
             </div>
 
-            <div class="grid-item">
-                <a href="#">工事中</a>
-                <div class="tooltip">工事中</div>
+            <div class="grid-wrapper">
+                <a href="https://58gis.github.io/kaso_kamitsu/" class="grid-item">
+                    <text>過疎と過密(編集中)</text>
+                    <div class="content-wrapper">
+                        <p>1920年に初めて国勢調査が開始されてから、我が国の人口動態は数々の変遷を経てきた。...</p>
+                        <img src="https://2.bp.blogspot.com/-UxbAnJzGsgs/UdoBWVQhgAI/AAAAAAAAV9I/qC1HqrDE0uw/s800/nejirekokkai.png" alt="ねじれ国会の画像" class="content-image">
+                    </div>
+                </a>
+                <div class="tooltip">列島の人口の偏りを<br>時系列でに表示</div>
             </div>
         </div>
     </section>
