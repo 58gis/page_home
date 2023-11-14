@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
-<!--R5/10/30 11:30-->
-<!--05home.html-->
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
@@ -14,7 +14,7 @@
             margin: 0;
         }
 
-        /* 二部構成のスタイル */
+        
         section {
             padding: 20px;
             margin-bottom: 20px;
@@ -22,18 +22,22 @@
             border-radius: 10px;
         }
 
-        /* グリッドレイアウトのスタイル */
+        
         .grid-layout {
             display: grid;
             gap: 20px;
             position: relative;
-            padding: 20px; /*コンテナ内のアイテムとの間隔をとる*/
+            padding: 20px; 
         }
+            @media (min-width: 850px) {
+                .grid-layout {
+                    grid-template-columns: repeat(2, 1fr);
+            }}
         .grid-wrapper {
-            position: relative; /* tooltipの絶対位置の基準とするため */
+            position: relative; 
         }
         .grid-item {
-            display: block; /*リンクをブロックレベル要素として扱う*/
+            display: block; 
             border: 1px solid #e0e0e0;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
             padding: 10px;
@@ -42,23 +46,22 @@
             height: 200px;
             overflow: hidden;
             text-decoration: none;
-            color: inherit; /* リンクの文字色を継承 */
-            background-color: #fff
+            color: inherit; 
+            background-color: #fff;
         }
-            @media (min-width: 850px) {
-                .grid-layout {
-                    grid-template-columns: repeat(2, 1fr);
-            }}
         .grid-item > text {
             font-size: 2.5em;
             font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; 
         }
         .grid-item p {
             margin: 10px 30px;
             color: #555;
         }
 
-        /* 内容と画像のラッパー */
+        
         .content-wrapper {
             display: flex;
         }
@@ -68,11 +71,11 @@
                 }}
         .content-image {
             width: 150px;
-            /*height: 150px;*/
+            
         }
 
 
-        /* 吹き出し*/
+        
         .grid-item:hover+.tooltip {
             display: block;
             visibility: visible;
@@ -105,15 +108,12 @@
 </head>
 
 <body>
-    <!-- 1部目: 概要 -->
-    <section>
-        <h1>58gisのページ</h1>
-        <p>各種コンテンツへのリンクページです</p>
-    </section>
+    
+    
 
-    <!-- 2部目: コンテンツへのリンク集 -->
+    
     <section>
-        <h2>コンテンツへのリンク集</h2>
+        <h2>コンテンツへのリンク集(4件)</h2>
         <div class="grid-layout">
             <div class="grid-wrapper">
                 <a href="https://58gis.github.io/sangiin/" class="grid-item">
